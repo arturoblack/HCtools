@@ -1,0 +1,23 @@
+{
+  "name": "HCTools",
+  "version": "0.0.1",
+  "authors": [
+    "arturoblack <arturo.black0@gmail.com>"
+  ],
+  "description": "Heroclix Tools",
+  "main": "index.html",
+  "keywords": [
+    "heroclix",
+    "power",
+    "combo",
+    "html",
+    "angular"
+  ],
+  "license": "GNU GPL v2",
+  "homepage": "arturoblack.com/hctools",
+  "dependencies": {
+    "angular": "~1.4.5",
+    "angular-material": "~0.11.0",
+    "angular-ui-router": "~0.2.15"
+  }
+}

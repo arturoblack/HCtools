@@ -1,0 +1,24 @@
+/**
+ * Combinator App Styles
+ * @author Arturo B. <arturo.black@gmail.com>
+ * @date 29/08/15
+**/
+
+.block{
+  padding: 0.4em;
+}
+
+.block.before{
+  background-color: #009688;
+  color: #EFEFEF;
+}
+
+.block.after{
+  background-color: #9C27B0;
+  color: #EFEFEF;
+}
+
+.block.with{
+  background-color: #8BC34A;
+  color: #EFEFEF;
+}
