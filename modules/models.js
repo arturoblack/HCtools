@@ -13,7 +13,7 @@
 **/
 
 CombinatorApp
-.factory('Power', ['$resource',
+.factory('Power', [
   function($resource){
     var powers = [
       { 

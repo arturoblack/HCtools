@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <title> HeroClix Combo Manager </title>
   
+  <meta name="viewport" content="width=device-width">
   <!--Styles --> 
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
-  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+  <link rel="stylesheet" href="lib/vendor/angular-material/angular-material.css"/>
   <link rel="stylesheet" href="css/app.css"/>
 
 </head>
@@ -32,25 +33,25 @@
             <md-item >
               <md-button ng-click="listItemClick($index)">
                 <md-icon md-svg-src=""></md-icon>
-                <span class="md-inline-list-icon-label">Item 1</span>
+                <span class="md-inline-list-icon-label">Poderes</span>
               </md-button>
             </md-item>
             <md-item >
               <md-button ng-click="listItemClick($index)">
                 <md-icon md-svg-src=""></md-icon>
-                <span class="md-inline-list-icon-label">Item 2</span>
+                <span class="md-inline-list-icon-label">Habilidades</span>
               </md-button>
             </md-item>
             <md-item >
               <md-button ng-click="listItemClick($index)">
                 <md-icon md-svg-src=""></md-icon>
-                <span class="md-inline-list-icon-label">Item 3</span>
+                <span class="md-inline-list-icon-label">Tabla</span>
               </md-button>
             </md-item>
             <md-item >
               <md-button ng-click="listItemClick($index)">
                 <md-icon md-svg-src=""></md-icon>
-                <span class="md-inline-list-icon-label">Item 4</span>
+                <span class="md-inline-list-icon-label">Atributos</span>
               </md-button>
             </md-item>
           </md-list>
@@ -60,7 +61,7 @@
       <!-- page header -->
       <md-toolbar class="md-dark-theme">
         <h2 class="md-toolbar-tools">
-          Habilidades Combinables en Heroclix
+          Heroclix Tool Box
         </h2>
       </md-toolbar>
       <!-- End page header -->
@@ -68,60 +69,87 @@
       <md-content class="md-padding page" ng-controller="MainCtrl" ng-init="load()" ui-view="content">
         <!-- Subheader -->
         <md-toolbar md-scroll-shrink>
-          <div class="md-toolbar-tools">
+          <div class="md-toolbar-tools"
+            style="color:{{power.bcolor || '#FFF'}}; background-color:{{power.color || '#3F51B5'}};">
+            <img height="48px" width="48px" ng-src="img/{{power.action || 'NA' }}.png" alt="img"/>  
             <h3>
-              <span>Combinación de Poderes img/{{power.action || "NA" }}.png </span>
+              
+              <span>{{power.name || 'Poderes'}} </span>
             </h3>
           </div>
         </md-toolbar>
         <!-- End Subheader -->
         <!-- Eleccion de Poder -->
-        <div layout="row" 
+        <div layout="row"
+          layout-wrap
+          class="md-toolbar-tools"
           style="color:{{power.bcolor || '#000'}}; background-color:{{power.color || '#FFF'}};">
-          <img ng-src="img/{{power.action || 'NA' }}.png" alt="img"/>
-          <md-input-container>
-            <label>Tipo</label>
-            <md-select ng-model="power_type" ng-change="setPowerType(power_type)" >
-              <md-option 
-                ng-repeat="ptype in powers" 
-                value="{{ptype.icon}}">
-                {{ptype.name}}
-              </md-option>
-            </md-select>
-          </md-input-container>
-          <md-input-container>
-            <label>Poder</label>
-            <md-select ng-model="power_name" ng-change="setPower(power_name)">
-              <md-option 
-                ng-repeat="power in type_powers" 
-                value="{{power.name}}">
-                <md-icon md-font-icon="email"
-                  ng-class="font.theme"
-                  class="step ">
-                </md-icon>
-                {{power.name}}
-              </md-option>
-            </md-select>
-          </md-input-container>
+          <!--<div flex>
+            <img height="48px" width="48px" ng-src="img/{{power_type| uppercase}}.png" alt="{{power_type}}"/>
+          </div>-->
+          <div flex>
+            <md-input-container>
+              <label>Tipo</label>
+              <md-select ng-model="power_type" ng-change="setPowerType(power_type)" >
+                <md-option 
+                  ng-repeat="ptype in powers" 
+                  value="{{ptype.icon}}">
+                  <img height="32px" src="img/{{ptype.name}}.png">
+                  {{ptype.name}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+          <div flex>
+            <md-input-container>
+              <label>Poder</label>
+              <md-select ng-model="power_name" ng-change="setPower(power_name)">
+                <md-option 
+                  ng-repeat="power in type_powers" 
+                  value="{{power.name}}">
+                  <md-icon md-font-icon="email"
+                    ng-class="font.theme"
+                    class="step ">
+                  </md-icon>
+                  {{power.name}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+          </div>
         </div>
         <!-- Datos del Poder -->
         <div layout="column" class="md-whiteframe-z2" ng-if="power">
           <div layout="column" class="md-whiteframe-z2">
-            <div layout="row">
-              <p class="block" ng-repeat="ea in power.extra_actions track by $index" flex="25"> 
-                {{ea}} 
-              </p class="block">
+            <div class="block" layout="row" layout-wrap>
+              <div flex="25">
+                <img class="img_description" src="img/{{power_type| uppercase}}.png">
+              </div>
+              <div flex>
+                <p>{{power.description}}</p>
+              </div>
             </div>
-            <div class="block"> {{power.description}} </div>
+          </div>
+          <div layout="row">
+            {{power.extra_actions}} 
           </div>
           <div layout="row">
             <div flex="50" class="block before">
               <h4> Poderes Antes</h4>
-              <p ng-repeat="power in bpowers">{{power.action}} -- {{power.name}} </p>
+              <p 
+                class="power" 
+                style="color:{{power.bcolor || '#000'}}; background-color:{{power.color || '#FFF'}};" 
+                ng-repeat="power in bpowers">
+                {{power.action}} -- {{power.name}} 
+              </p>
             </div>
             <div flex="50" class="block after">
               <h4> Poderes Despues</h4>
-              <p ng-repeat="power in apowers">{{power.action}} -- {{power.name}} </p>
+              <p 
+                class="power" 
+                style="color:{{power.bcolor || '#000'}}; background-color:{{power.color || '#FFF'}};" 
+                ng-repeat="power in apowers">
+                {{power.action}} -- {{power.name}}
+              </p>
             </div>
           </div>
           <div class="block with">
@@ -143,13 +171,11 @@
   <!-- End Footer -->
 <!-- Scripts -->
   <!-- Libs -->
-  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-  <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
-  <script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
-  <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
-  <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
-
+  <script type="text/javascript" src="lib/vendor/angular/angular.min.js"></script>
+  <script type="text/javascript" src="lib/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="lib/vendor/angular-animate/angular-animate.min.js"></script>
+  <script type="text/javascript" src="lib/vendor/angular-aria/angular-aria.min.js"></script>
+  <script type="text/javascript" src="lib/vendor/angular-material/angular-material.min.js"></script>
   <!-- App's Scripts --> 
   <script type="text/javascript" src="modules/main.js"></script>
   <script type="text/javascript" src="modules/controllers.js"></script>
