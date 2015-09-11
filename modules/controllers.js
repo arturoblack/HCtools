@@ -1,8 +1,11 @@
+'use stric'
+
 CombinatorApp
-.controller('MainCtrl', ['$scope', 'Power',
-  function($scope, Power) {
+.controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', 'Power',
+  function($scope, $timeout, $mdSidenav, $mdUtil, Power) {
     console.log('main controller load');
-    
+    $scope.toggleLeft = buildToggler('left');
+
     $scope.load = function() {
       $scope.clearPower();
       $scope.powers = Power.list();
@@ -34,6 +37,21 @@ CombinatorApp
       $scope.power = false;
       $scope.bpowers = [];
       $scope.apowers = [];
+    }
+
+    /**
+     * Build handler to open/close a SideNav; when animation finishes
+     * report completion in console
+     */
+    function buildToggler(navID) {
+      var debounceFn =  $mdUtil.debounce(function(){
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            console.log("toggle " + navID + " is done");
+          });
+      },200);
+      return debounceFn;
     }
   } 
 ]);

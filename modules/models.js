@@ -22,6 +22,7 @@ CombinatorApp
         powers: [
           {
             name: 'FLURRY',
+            names: { en:'FLURRY', es:'DobleAtaqueS'},
             color : '#D4003F',
             bcolor: '#1A1A1A',
             description: 'text_description',
@@ -46,7 +47,7 @@ CombinatorApp
           },
           {
             name: 'EARTHBOUND/NEUTRALIZED',
-            color : '#CCFF33',
+            color : '#CDDDC69',
             bcolor: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
@@ -54,7 +55,7 @@ CombinatorApp
           },
           {
             name: 'CHARGE',
-            color : '#258F13',
+            color : '#5DB356',
             bcolor: '#1A1A1A',
             description: 'text_description',
             action: 'PA',
@@ -65,12 +66,12 @@ CombinatorApp
             color : '#89C6E8',
             bcolor: '#1A1A1A',
             description: 'text_description',
-            action: 'CCA/RCA',
+            action: 'CCA-RCA',
             extra_actions: []
           },
           {
             name: 'PLASTICITY',
-            color : '#292CFF',
+            color : '#3F51B5',
             bcolor: '#E6E6E6',
             description: 'text_description',
             action: 'NA',
@@ -148,7 +149,7 @@ CombinatorApp
           },
           {
             name: 'QUAKE',
-            color : '#CCFF33',
+            color : '#CDDDC69',
             bcolor: '#1A1A1A',
             description: 'text_description',
             action: 'CCA',
@@ -156,7 +157,7 @@ CombinatorApp
           },
           {
             name: 'SUPER STRENGTH',
-            color : '#258F13',
+            color : '#5DB356',
             bcolor: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
@@ -167,12 +168,12 @@ CombinatorApp
             color : '#89C6E8',
             bcolor: '#1A1A1A',
             description: 'text_description',
-            action: 'CCA/RCA',
+            action: 'CCA-RCA',
             extra_actions: ['CC', 'RC']
           },
           {
             name: 'PENETRATING/PSYCHIC BLAST',
-            color : '#292CFF',
+            color : '#3F51B5',
             bcolor: '#E6E6E6',
             description: 'text_description',
             action: 'RCA',
@@ -251,7 +252,7 @@ CombinatorApp
           },
           {
             name: 'COMBAT REFLEXES',
-            color : '#CCFF33',
+            color : '#CDDDC69',
             bcolor: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
@@ -259,7 +260,7 @@ CombinatorApp
           },
           {
             name: 'ENERGY SHIELD/DEFLECTION',
-            color : '#258F13',
+            color : '#5DB356',
             bcolor: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
@@ -275,7 +276,7 @@ CombinatorApp
           },
           {
             name: 'MASTERMIND',
-            color : '#292CFF',
+            color : '#3F51B5',
             bcolor: '#E6E6E6',
             description: 'text_description',
             action: 'NA',
@@ -353,7 +354,7 @@ CombinatorApp
           },
           {
             name: 'EXPLOIT WEAKNESS',
-            color : '#CCFF33',
+            color : '#CDDDC69',
             bcolor: '#1A1A1A',
             description: 'text_description',
             action: 'CCA',
@@ -361,7 +362,7 @@ CombinatorApp
           },
           {
             name: 'ENHANCEMENT',
-            color : '#258F13',
+            color : '#5DB356',
             bcolor: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
@@ -377,7 +378,7 @@ CombinatorApp
           },
           {
             name: 'SHAPE CHANGE',
-            color : '#292CFF',
+            color : '#3F51B5',
             bcolor: '#E6E6E6',
             description: 'text_description',
             action: 'NA',

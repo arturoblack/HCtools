@@ -7,16 +7,20 @@
   <meta name="viewport" content="width=device-width">
   <!--Styles --> 
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
-  <link rel="stylesheet" href="lib/vendor/angular-material/angular-material.css"/>
+  <link rel="stylesheet" href="lib/vendor/angular-material/angular-material.min.css"/>
+  <link rel="stylesheet" href="lib/vendor/angular-material-icons/angular-material-icons.css"/>
   <link rel="stylesheet" href="css/app.css"/>
 
 </head>
 <body ng-app="CombinatorApp" layout="column">
-  <section layout="row" flex>
+  <section 
+      layout="row" 
+      flex 
+      ng-controller="MainCtrl" 
+      ng-init="load()">
     <md-sidenav 
       class="md-sidenav-left md-whiteframe-z2 md-dark-theme"
-      md-component-id="left" 
-      md-is-locked-open="$mdMedia('gt-md')">
+      md-component-id="left">
       <md-toolbar class="md-dark-theme">
         <h2 class="md-toolbar-tools">
           <a href="#" ng-href="#" layout="row" flex="" class="docs-logo">
@@ -57,77 +61,70 @@
           </md-list>
       </md-content>  
     </md-sidenav>
-    <div layout="column" tabIndex="-1" role="main" flex>
+    <div calss="backg" 
+      layout="column" 
+      tabIndex="-1" 
+      role="main" 
+      flex> 
       <!-- page header -->
       <md-toolbar class="md-dark-theme">
         <h2 class="md-toolbar-tools">
+          <md-button ng-click="toggleLeft()">
+            Toggle left
+          </md-button>  
           Heroclix Tool Box
+          <ng-md-icon icon="expand_less" style="fill:white" size="42"></ng-md-icon>
         </h2>
       </md-toolbar>
+      <md-content layout-padding layout="row" layout-sm="column">
+        <div flex>
+          <md-input-container>
+            <label>Tipo</label>
+            <md-select ng-model="power_type" ng-change="setPowerType(power_type)" >
+              <md-option 
+                ng-repeat="ptype in powers" 
+                value="{{ptype.icon}}">
+                <img height="32px" src="img/{{ptype.name}}.png">
+                {{ptype.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <div flex>
+          <md-input-container>
+            <label>Poder</label>
+            <md-select ng-model="power_name" ng-change="setPower(power_name)">
+              <md-option 
+                ng-repeat="power in type_powers" 
+                value="{{power.name}}">
+                <ng-md-icon icon="mode_comment" style="fill:{{power.color}}" size="26"></ng-md-icon>
+                {{power.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+      </md-content>
       <!-- End page header -->
       <!-- page container -->
-      <md-content class="md-padding page" ng-controller="MainCtrl" ng-init="load()" ui-view="content">
+      <md-content class="md-padding page" ui-view="content">
         <!-- Subheader -->
         <md-toolbar md-scroll-shrink>
           <div class="md-toolbar-tools"
             style="color:{{power.bcolor || '#FFF'}}; background-color:{{power.color || '#3F51B5'}};">
-            <img height="48px" width="48px" ng-src="img/{{power.action || 'NA' }}.png" alt="img"/>  
             <h3>
-              
               <span>{{power.name || 'Poderes'}} </span>
             </h3>
+            <img height="48px" width="48px" class="img_description" ng-if="power_type" src="img/{{power_type| uppercase}}.png">
+            <img height="48px" width="48px" ng-if="power" ng-src="img/{{power.action }}.png" alt="img"/>  
+            
           </div>
         </md-toolbar>
         <!-- End Subheader -->
-        <!-- Eleccion de Poder -->
-        <div layout="row"
-          layout-wrap
-          class="md-toolbar-tools"
-          style="color:{{power.bcolor || '#000'}}; background-color:{{power.color || '#FFF'}};">
-          <!--<div flex>
-            <img height="48px" width="48px" ng-src="img/{{power_type| uppercase}}.png" alt="{{power_type}}"/>
-          </div>-->
-          <div flex>
-            <md-input-container>
-              <label>Tipo</label>
-              <md-select ng-model="power_type" ng-change="setPowerType(power_type)" >
-                <md-option 
-                  ng-repeat="ptype in powers" 
-                  value="{{ptype.icon}}">
-                  <img height="32px" src="img/{{ptype.name}}.png">
-                  {{ptype.name}}
-                </md-option>
-              </md-select>
-            </md-input-container>
-          </div>
-          <div flex>
-            <md-input-container>
-              <label>Poder</label>
-              <md-select ng-model="power_name" ng-change="setPower(power_name)">
-                <md-option 
-                  ng-repeat="power in type_powers" 
-                  value="{{power.name}}">
-                  <md-icon md-font-icon="email"
-                    ng-class="font.theme"
-                    class="step ">
-                  </md-icon>
-                  {{power.name}}
-                </md-option>
-              </md-select>
-            </md-input-container>
-          </div>
-        </div>
+        
         <!-- Datos del Poder -->
-        <div layout="column" class="md-whiteframe-z2" ng-if="power">
+        <md-content layout="column" class="md-whiteframe-z2" ng-if="power">
           <div layout="column" class="md-whiteframe-z2">
-            <div class="block" layout="row" layout-wrap>
-              <div flex="25">
-                <img class="img_description" src="img/{{power_type| uppercase}}.png">
-              </div>
-              <div flex>
-                <p>{{power.description}}</p>
-              </div>
-            </div>
+            <p>{{power.description}}</p>
           </div>
           <div layout="row">
             {{power.extra_actions}} 
@@ -155,7 +152,7 @@
           <div class="block with">
             <h4> Poderes Con</h4>
           </div>
-        </div>
+        </md-content>
       </md-content>
       <!-- End page container -->
     </div>
@@ -176,8 +173,11 @@
   <script type="text/javascript" src="lib/vendor/angular-animate/angular-animate.min.js"></script>
   <script type="text/javascript" src="lib/vendor/angular-aria/angular-aria.min.js"></script>
   <script type="text/javascript" src="lib/vendor/angular-material/angular-material.min.js"></script>
+  <script type="text/javascript" src="lib/vendor/angular-material-icons/angular-material-icons.min.js"></script>
+  <script type="text/javascript" src="lib/vendor/angular-gettext/dist/angular-gettext.min.js"></script>
+
   <!-- App's Scripts --> 
-  <script type="text/javascript" src="modules/main.js"></script>
+  <script type="text/javascript" src="modules/app.js"></script>
   <script type="text/javascript" src="modules/controllers.js"></script>
   <script type="text/javascript" src="modules/models.js"></script>
 <!-- END Scripts -->
