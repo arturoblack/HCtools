@@ -149,7 +149,7 @@ CombinatorApp
           },
           {
             name: 'QUAKE',
-            color : '#CDDDC69',
+            color : '#5DB356',
             bcolor: '#1A1A1A',
             description: 'text_description',
             action: 'CCA',
