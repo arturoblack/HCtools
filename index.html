@@ -97,8 +97,8 @@
               <md-option 
                 ng-repeat="power in type_powers" 
                 value="{{power.name}}">
-                <ng-md-icon icon="mode_comment" style="fill:{{power.color}}" size="26"></ng-md-icon>
-                {{power.name}}
+                <ng-md-icon icon="mode_comment" style="fill:{{power.bcolor}}" size="26"></ng-md-icon>
+                {{power.names[lang] }}
               </md-option>
             </md-select>
           </md-input-container>
@@ -110,9 +110,9 @@
         <!-- Subheader -->
         <md-toolbar md-scroll-shrink>
           <div class="md-toolbar-tools"
-            style="color:{{power.bcolor || '#FFF'}}; background-color:{{power.color || '#3F51B5'}};">
+            style="color:{{power.color || '#FFF'}}; background-color:{{power.bcolor || '#3F51B5'}};">
             <h3>
-              <span>{{power.name || 'Poderes'}} </span>
+              <span>{{power.names[lang] || 'Poderes'}} </span>
             </h3>
             <img height="48px" width="48px" class="img_description" ng-if="power_type" src="img/{{power_type| uppercase}}.png">
             <img height="48px" width="48px" ng-if="power" ng-src="img/{{power.action }}.png" alt="img"/>  
@@ -124,7 +124,7 @@
         <!-- Datos del Poder -->
         <md-content layout="column" class="md-whiteframe-z2" ng-if="power">
           <div layout="column" class="md-whiteframe-z2">
-            <p>{{power.description}}</p>
+            <p>{{power.description[lang] }}</p>
           </div>
           <div layout="row">
             {{power.extra_actions}} 
@@ -134,18 +134,18 @@
               <h4> Poderes Antes</h4>
               <p 
                 class="power" 
-                style="color:{{power.bcolor || '#000'}}; background-color:{{power.color || '#FFF'}};" 
+                style="color:{{power.color || '#000'}}; background-color:{{power.bcolor || '#FFF'}};" 
                 ng-repeat="power in bpowers">
-                {{power.action}} -- {{power.name}} 
+                {{power.action}} -- {{power.names[lang] }} 
               </p>
             </div>
             <div flex="50" class="block after">
               <h4> Poderes Despues</h4>
               <p 
                 class="power" 
-                style="color:{{power.bcolor || '#000'}}; background-color:{{power.color || '#FFF'}};" 
+                style="color:{{power.color || '#000'}}; background-color:{{power.bcolor || '#FFF'}};" 
                 ng-repeat="power in apowers">
-                {{power.action}} -- {{power.name}}
+                {{power.action}} -- {{power.names[lang] }}
               </p>
             </div>
           </div>

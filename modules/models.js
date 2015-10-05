@@ -1,5 +1,7 @@
 'use strict';
 
+/* global CombinatorApp */
+
 /**
  NA  -> No Action (no actions requred)
  MA  -> Movement Action
@@ -14,7 +16,7 @@
 
 CombinatorApp
 .factory('Power', [
-  function($resource){
+  function(){
     var powers = [
       { 
         name: 'SPEED',
@@ -23,96 +25,107 @@ CombinatorApp
           {
             name: 'FLURRY',
             names: { en:'FLURRY', es:'DobleAtaqueS'},
-            color : '#D4003F',
-            bcolor: '#1A1A1A',
-            description: 'text_description',
+            bcolor : '#D4003F',
+            color: '#1A1A1A',
+            description: {en:'text_description', es:'descripción'},
             action: 'CCA',
             extra_actions: ['CC', 'CC']
           },
           {
             name: 'LEAP/CLIMB',
-            color : '#FF9900',
-            bcolor: '#1A1A1A',
+            names: { en:'LEAP/CLIMB', es:'name'},
+            bcolor : '#FF9900',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'MA',
             extra_actions: ['M']
           },
           {
             name: 'PHASING/TELEPORT',
-            color : '#FCF647',
-            bcolor: '#1A1A1A',
+            names: { en:'PHASING/TELEPORT', es:'name'},
+            bcolor : '#FCF647',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: ['M']
           },
           {
             name: 'EARTHBOUND/NEUTRALIZED',
-            color : '#CDDDC69',
-            bcolor: '#1A1A1A',
+            names: { en:'EARTHBOUND/NEUTRALIZED', es:'name'},
+            bcolor : '#8BC34A',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'CHARGE',
-            color : '#5DB356',
-            bcolor: '#1A1A1A',
+            names: { en:'CHARGE', es:'name'},
+            bcolor : '#5DB356',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'PA',
             extra_actions: ['M','CCA']
           },
           {
             name: 'MIND CONTROL',
-            color : '#89C6E8',
-            bcolor: '#1A1A1A',
+            names: { en:'MIND CONTROL', es:'name'},
+            bcolor : '#89C6E8',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'CCA-RCA',
             extra_actions: []
           },
           {
             name: 'PLASTICITY',
-            color : '#3F51B5',
-            bcolor: '#E6E6E6',
+            names: { en:'PLASTICITY', es:'name'},
+            bcolor : '#3F51B5',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'FORCE BLAST',
-            color : '#750DA6',
-            bcolor: '#E6E6E6',
+            names: { en:'FORCE BLAST', es:'name'},
+            bcolor : '#750DA6',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'PA',
             extra_actions: []
           },
           {
             name: 'SIDESTEP',
-            color : '#E368E3',
-            bcolor: '#1A1A1A',
+            names: { en:'SIDESTEP', es:'name'},
+            bcolor : '#E368E3',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'FA',
             extra_actions: ['M']
           },
           {
             name: 'HYPERSONIC SPEED',
-            color : '#694521',
-            bcolor: '#E6E6E6',
+            names: { en:'HYPERSONIC SPEED', es:'name'},
+            bcolor : '#694521',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'PA',
             extra_actions: ['M','RCA', 'CCA']
           },
           {
             name: 'STEALTH',
-            color : '#000000',
-            bcolor: '#E6E6E6',
+            names: { en:'STEALTH', es:'name'},
+            bcolor : '#000000',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'RUNNING SHOT',
-            color : '#808080',
-            bcolor: '#1A1A1A',
+            names: { en:'RUNNING SHOT', es:'name'},
+            bcolor : '#808080',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'PA',
             extra_actions: ['M','RCA']
@@ -125,96 +138,108 @@ CombinatorApp
         powers: [
           {
             name: 'BLADES/CLAWS/FANGS',
-            color : '#D4003F',
-            bcolor: '#1A1A1A',
+            names: { en:'BLADES/CLAWS/FANGS', es:'name'},
+            bcolor : '#D4003F',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'ENERGY EXPLOSION',
-            color : '#FF9900',
-            bcolor: '#1A1A1A',
+            names: { en:'ENERGY EXPLOSION', es:'name'},
+            bcolor : '#FF9900',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'RCA',
             extra_actions: ['RC']
           },
           {
             name: 'PULSE WAVE',
-            color : '#FCF647',
-            bcolor: '#1A1A1A',
+            names: { en:'PULSE WAVE', es:'name'},
+            bcolor : '#FCF647',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'RCA',
             extra_actions: []
           },
           {
             name: 'QUAKE',
-            color : '#5DB356',
-            bcolor: '#1A1A1A',
+            names: { en:'QUAKE', es:'name'},
+            bcolor : '#8BC34A',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'CCA',
             extra_actions: ['CC']
           },
           {
             name: 'SUPER STRENGTH',
-            color : '#5DB356',
-            bcolor: '#1A1A1A',
+            names: { en:'SUPER STRENGTH', es:'name'},
+            bcolor : '#5DB356',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'INCAPACITATE',
-            color : '#89C6E8',
-            bcolor: '#1A1A1A',
+            names: { en:'INCAPACITATE', es:'name'},
+            bcolor : '#89C6E8',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'CCA-RCA',
             extra_actions: ['CC', 'RC']
           },
           {
             name: 'PENETRATING/PSYCHIC BLAST',
-            color : '#3F51B5',
-            bcolor: '#E6E6E6',
+            names: { en:'PENETRATING/PSYCHIC BLAST', es:'name'},
+            bcolor : '#3F51B5',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'RCA',
             extra_actions: ['RC']
           },
           {
             name: 'SMOKE CLOUD',
-            color : '#750DA6',
-            bcolor: '#E6E6E6',
+            names: { en:'SMOKE CLOUD', es:'name'},
+            bcolor : '#750DA6',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'PA',
             extra_actions: []
           },
           {
             name: 'PRECISION STRIKE',
-            color : '#E368E3',
-            bcolor: '#1A1A1A',
+            names: { en:'PRECISION STRIKE', es:'name'},
+            bcolor : '#E368E3',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'POISON',
-            color : '#694521',
-            bcolor: '#E6E6E6',
+            names: { en:'POISON', es:'name'},
+            bcolor : '#694521',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'FA',
             extra_actions: []
           },
           {
             name: 'STEAL ENERGY',
-            color : '#000000',
-            bcolor: '#E6E6E6',
+            names: { en:'STEAL ENERGY', es:'name'},
+            bcolor : '#000000',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'TELEKINESIS',
-            color : '#808080',
-            bcolor: '#1A1A1A',
+            names: { en:'TELEKINESIS', es:'name'},
+            bcolor : '#808080',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'PA',
             extra_actions: []
@@ -227,97 +252,109 @@ CombinatorApp
         powers: [
           {
             name: 'SUPER SENSES',
-            color : '#D4003F',
-            bcolor: '#1A1A1A',
+            names: { en:'SUPER SENSES', es:'name'},
+            bcolor : '#D4003F',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'TOUGHNESS',
+            names: { en:'TOUGHNESS', es:'name'},
 
-            color : '#FF9900',
-            bcolor: '#1A1A1A',
+            bcolor : '#FF9900',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'DEFEND',
-            color : '#FCF647',
-            bcolor: '#1A1A1A',
+            names: { en:'DEFEND', es:'name'},
+            bcolor : '#FCF647',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'COMBAT REFLEXES',
-            color : '#CDDDC69',
-            bcolor: '#1A1A1A',
+            names: { en:'COMBAT REFLEXES', es:'name'},
+            bcolor : '#8BC34A',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'ENERGY SHIELD/DEFLECTION',
-            color : '#5DB356',
-            bcolor: '#1A1A1A',
+            names: { en:'ENERGY SHIELD/DEFLECTION', es:'name'},
+            bcolor : '#5DB356',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'BARRIER',
-            color : '#89C6E8',
-            bcolor: '#1A1A1A',
+            names: { en:'BARRIER', es:'name'},
+            bcolor : '#89C6E8',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'PA',
             extra_actions: []
           },
           {
             name: 'MASTERMIND',
-            color : '#3F51B5',
-            bcolor: '#E6E6E6',
+            names: { en:'MASTERMIND', es:'name'},
+            bcolor : '#3F51B5',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'WILLPOWER',
-            color : '#750DA6',
-            bcolor: '#E6E6E6',
+            names: { en:'WILLPOWER', es:'name'},
+            bcolor : '#750DA6',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'INVINCIBLE',
-            color : '#E368E3',
-            bcolor: '#1A1A1A',
+            names: { en:'INVINCIBLE', es:'name'},
+            bcolor : '#E368E3',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'IMPERVIOUS',
-            color : '#694521',
-            bcolor: '#E6E6E6',
+            names: { en:'IMPERVIOUS', es:'name'},
+            bcolor : '#694521',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'REGENERATION',
-            color : '#000000',
-            bcolor: '#E6E6E6',
+            names: { en:'REGENERATION', es:'name'},
+            bcolor : '#000000',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'PA',
             extra_actions: []
           },
           {
             name: 'INVULNERABILITY',
-            color : '#808080',
-            bcolor: '#1A1A1A',
+            names: { en:'INVULNERABILITY', es:'name'},
+            bcolor : '#808080',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
@@ -330,96 +367,108 @@ CombinatorApp
         powers: [
           {
             name: 'RANGED COMBAT EXPERT',
-            color : '#D4003F',
-            bcolor: '#1A1A1A',
+            names: { en:'RANGED COMBAT EXPERT', es:'name'},
+            bcolor : '#D4003F',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'PA',
             extra_actions: ['RC']
           },
           {
             name: 'BATTLE FURY',
-            color : '#FF9900',
-            bcolor: '#1A1A1A',
+            names: { en:'BATTLE FURY', es:'name'},
+            bcolor : '#FF9900',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'SUPPORT',
-            color : '#FCF647',
-            bcolor: '#1A1A1A',
+            names: { en:'SUPPORT', es:'name'},
+            bcolor : '#FCF647',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'PA',
             extra_actions: []
           },
           {
             name: 'EXPLOIT WEAKNESS',
-            color : '#CDDDC69',
-            bcolor: '#1A1A1A',
+            names: { en:'EXPLOIT WEAKNESS', es:'name'},
+            bcolor : '#8BC34A',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'CCA',
             extra_actions: ['CC']
           },
           {
             name: 'ENHANCEMENT',
-            color : '#5DB356',
-            bcolor: '#1A1A1A',
+            names: { en:'ENHANCEMENT', es:'name'},
+            bcolor : '#5DB356',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'PROBABILITY CONTROL',
-            color : '#89C6E8',
-            bcolor: '#1A1A1A',
+            names: { en:'PROBABILITY CONTROL', es:'name'},
+            bcolor : '#89C6E8',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'SHAPE CHANGE',
-            color : '#3F51B5',
-            bcolor: '#E6E6E6',
+            names: { en:'SHAPE CHANGE', es:'name'},
+            bcolor : '#3F51B5',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'CLOSE COMBAT EXPERT',
-            color : '#750DA6',
-            bcolor: '#E6E6E6',
+            names: { en:'CLOSE COMBAT EXPERT', es:'name'},
+            bcolor : '#750DA6',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'PA',
             extra_actions: ['CC']
           },
           {
             name: 'EMPOWER',
-            color : '#E368E3',
-            bcolor: '#1A1A1A',
+            names: { en:'EMPOWER', es:'name'},
+            bcolor : '#E368E3',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'NA',
             extra_actions: []
           },
           {
             name: 'PERPLEX',
-            color : '#694521',
-            bcolor: '#E6E6E6',
+            names: { en:'PERPLEX', es:'name'},
+            bcolor : '#694521',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'FA',
             extra_actions: []
           },
           {
             name: 'OUTWIT',
-            color : '#000000',
-            bcolor: '#E6E6E6',
+            names: { en:'OUTWIT', es:'name'},
+            bcolor : '#000000',
+            color: '#E6E6E6',
             description: 'text_description',
             action: 'FA',
             extra_actions: []
           },
           {
             name: 'LEADERSHIP',
-            color : '#808080',
-            bcolor: '#1A1A1A',
+            names: { en:'LEADERSHIP', es:'name'},
+            bcolor : '#808080',
+            color: '#1A1A1A',
             description: 'text_description',
             action: 'FA',
             extra_actions: []
@@ -470,7 +519,7 @@ CombinatorApp
           for (var k = powers[i].powers[j].extra_actions.length - 1; k >= 0; k--) {
             if(powers[i].powers[j].extra_actions[k] == action){
               list.push(powers[i].powers[j]);
-            }  
+            }
           }
         }
       }
@@ -497,7 +546,7 @@ CombinatorApp
         if(extra_actions[i].substring(extra_actions[i].length -1) == 'A'){
           list = list.concat(powersModel.findInAction(extra_actions[i]));
         }
-      };
+      }
       return list;
     };
 
