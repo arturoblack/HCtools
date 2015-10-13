@@ -31,7 +31,7 @@ CombinatorApp
       $scope.power = false;
       $scope.bpowers = [];
       $scope.apowers = [];
-    }
+    };
 
     /**
      * Build handler to open/close a SideNav; when animation finishes
