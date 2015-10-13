@@ -1,6 +1,6 @@
 'use strict';
 
-/* global CombinatorApp */
+/* global app */
 
 /**
  NA  -> No Action (no actions requred)
@@ -14,7 +14,7 @@
  RC  -> Range Combat
 **/
 
-CombinatorApp
+app
 .factory('Power', [
   function(){
     var powers = [
@@ -489,7 +489,7 @@ CombinatorApp
     powersModel.list = function(){
       return powers;
     };
-    
+
     /**
      * @param action: action name
      * @return array list: list of mattched power object

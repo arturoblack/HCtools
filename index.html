@@ -2,21 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title> HeroClix Combo Manager </title>
+  <title> HeroClix Combo App </title>
   
   <meta name="viewport" content="width=device-width">
   <!--Styles --> 
-  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
   <link rel="stylesheet" href="lib/vendor/angular-material/angular-material.min.css"/>
   <link rel="stylesheet" href="lib/vendor/angular-material-icons/angular-material-icons.css"/>
   <link rel="stylesheet" href="css/app.css"/>
 
 </head>
-<body ng-app="CombinatorApp" layout="column">
+<body ng-app="HCToolsApp" layout="column">
   <section 
       layout="row" 
       flex 
-      ng-controller="MainCtrl" 
+      ng-controller="appCtrl"
       ng-init="load()">
     <md-sidenav 
       class="md-sidenav-left md-whiteframe-z2 md-dark-theme"
@@ -64,7 +64,7 @@
     <div calss="backg" 
       layout="column" 
       tabIndex="-1" 
-      role="main" 
+      role="main"
       flex> 
       <!-- page header -->
       <md-toolbar class="md-dark-theme">
@@ -76,85 +76,7 @@
           <ng-md-icon icon="expand_less" style="fill:white" size="42"></ng-md-icon>
         </h2>
       </md-toolbar>
-      <md-content layout-padding layout="row" layout-sm="column">
-        <div flex>
-          <md-input-container>
-            <label>Tipo</label>
-            <md-select ng-model="power_type" ng-change="setPowerType(power_type)" >
-              <md-option 
-                ng-repeat="ptype in powers" 
-                value="{{ptype.icon}}">
-                <img height="32px" src="img/{{ptype.name}}.png">
-                {{ptype.name}}
-              </md-option>
-            </md-select>
-          </md-input-container>
-        </div>
-        <div flex>
-          <md-input-container>
-            <label>Poder</label>
-            <md-select ng-model="power_name" ng-change="setPower(power_name)">
-              <md-option 
-                ng-repeat="power in type_powers" 
-                value="{{power.name}}">
-                <ng-md-icon icon="mode_comment" style="fill:{{power.bcolor}}" size="26"></ng-md-icon>
-                {{power.names[lang] }}
-              </md-option>
-            </md-select>
-          </md-input-container>
-        </div>
-      </md-content>
-      <!-- End page header -->
-      <!-- page container -->
-      <md-content class="md-padding page" ui-view="content">
-        <!-- Subheader -->
-        <md-toolbar md-scroll-shrink>
-          <div class="md-toolbar-tools"
-            style="color:{{power.color || '#FFF'}}; background-color:{{power.bcolor || '#3F51B5'}};">
-            <h3>
-              <span>{{power.names[lang] || 'Poderes'}} </span>
-            </h3>
-            <img height="48px" width="48px" class="img_description" ng-if="power_type" src="img/{{power_type| uppercase}}.png">
-            <img height="48px" width="48px" ng-if="power" ng-src="img/{{power.action }}.png" alt="img"/>  
-            
-          </div>
-        </md-toolbar>
-        <!-- End Subheader -->
-        
-        <!-- Datos del Poder -->
-        <md-content layout="column" class="md-whiteframe-z2" ng-if="power">
-          <div layout="column" class="md-whiteframe-z2">
-            <p>{{power.description[lang] }}</p>
-          </div>
-          <div layout="row">
-            {{power.extra_actions}} 
-          </div>
-          <div layout="row">
-            <div flex="50" class="block before">
-              <h4> Poderes Antes</h4>
-              <p 
-                class="power" 
-                style="color:{{power.color || '#000'}}; background-color:{{power.bcolor || '#FFF'}};" 
-                ng-repeat="power in bpowers">
-                {{power.action}} -- {{power.names[lang] }} 
-              </p>
-            </div>
-            <div flex="50" class="block after">
-              <h4> Poderes Despues</h4>
-              <p 
-                class="power" 
-                style="color:{{power.color || '#000'}}; background-color:{{power.bcolor || '#FFF'}};" 
-                ng-repeat="power in apowers">
-                {{power.action}} -- {{power.names[lang] }}
-              </p>
-            </div>
-          </div>
-          <div class="block with">
-            <h4> Poderes Con</h4>
-          </div>
-        </md-content>
-      </md-content>
-      <!-- End page container -->
+      <md-content layout-padding layout="row" layout-sm="column" ui-view> </md-content>
     </div>
   </section>
   <!-- END section -->
@@ -176,10 +98,15 @@
   <script type="text/javascript" src="lib/vendor/angular-material-icons/angular-material-icons.min.js"></script>
   <script type="text/javascript" src="lib/vendor/angular-gettext/dist/angular-gettext.min.js"></script>
 
-  <!-- App's Scripts --> 
+  <!-- Apps Scripts --> 
   <script type="text/javascript" src="modules/app.js"></script>
-  <script type="text/javascript" src="modules/controllers.js"></script>
-  <script type="text/javascript" src="modules/models.js"></script>
-<!-- END Scripts -->
+
+  <script type="text/javascript" src="modules/config/app.routers.js"></script>
+  <script type="text/javascript" src="modules/app/app.controllers.js"></script>
+  <script type="text/javascript" src="modules/models.js"></script> 
+  <!-- powers Scripts -->
+  <script type="text/javascript" src="modules/powers/controllers/power.controller.js"></script>
+  <script type="text/javascript" src="modules/powers/power.service.js"></script>
+  <!-- END Scripts -->
 </body>
 </html>
