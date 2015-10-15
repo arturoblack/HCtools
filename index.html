@@ -23,7 +23,7 @@
       md-component-id="left">
       <md-toolbar class="md-dark-theme">
         <h2 class="md-toolbar-tools">
-          <a href="#" ng-href="#" layout="row" flex="" class="docs-logo">
+          <a href="#/" ng-href="#" layout="row" flex="" class="docs-logo">
             <div class="docs-logotype">HeroClix CombiNator</div>
           </a>
           <md-button ng-click="toggleLeft()">
@@ -33,32 +33,20 @@
       </md-toolbar>
       <md-content class="md-padding">
           <!-- <md-subheader>Comment Actions</md-subheader> -->
-          <md-list>
-            <md-item >
-              <md-button ng-click="listItemClick($index)">
-                <md-icon md-svg-src=""></md-icon>
-                <span class="md-inline-list-icon-label">Poderes</span>
-              </md-button>
-            </md-item>
-            <md-item >
-              <md-button ng-click="listItemClick($index)">
-                <md-icon md-svg-src=""></md-icon>
-                <span class="md-inline-list-icon-label">Habilidades</span>
-              </md-button>
-            </md-item>
-            <md-item >
-              <md-button ng-click="listItemClick($index)">
-                <md-icon md-svg-src=""></md-icon>
-                <span class="md-inline-list-icon-label">Tabla</span>
-              </md-button>
-            </md-item>
-            <md-item >
-              <md-button ng-click="listItemClick($index)">
-                <md-icon md-svg-src=""></md-icon>
-                <span class="md-inline-list-icon-label">Atributos</span>
-              </md-button>
-            </md-item>
-          </md-list>
+          <ul>
+            <li>
+              <a ui-sref="home"> Home </a>
+            </li>
+            <li>
+              <a ui-sref="powers"> Poderes </a>
+            </li>
+            <li>
+              <a ui-sref="abilities"> Habilidades </a>
+            </li>
+            <li>
+              <a ui-sref="terrain"> Terreno </a>
+            </li>
+          </ul>
       </md-content>  
     </md-sidenav>
     <div calss="backg" 
@@ -100,13 +88,16 @@
 
   <!-- Apps Scripts --> 
   <script type="text/javascript" src="modules/app.js"></script>
-
-  <script type="text/javascript" src="modules/config/app.routers.js"></script>
+  <script type="text/javascript" src="modules/app/app.routes.js"></script>
   <script type="text/javascript" src="modules/app/app.controllers.js"></script>
   <script type="text/javascript" src="modules/models.js"></script> 
   <!-- powers Scripts -->
   <script type="text/javascript" src="modules/powers/controllers/power.controller.js"></script>
-  <script type="text/javascript" src="modules/powers/power.service.js"></script>
+  <!-- abilities Scripts -->
+  <script type="text/javascript" src="modules/abilities/controllers/ability.controller.js"></script>
+  <!-- terrain Scripts -->
+  <script type="text/javascript" src="modules/terrain/controllers/terrain.controller.js"></script>
   <!-- END Scripts -->
+
 </body>
 </html>

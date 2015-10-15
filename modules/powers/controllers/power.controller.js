@@ -3,11 +3,10 @@
 /*global app */
 
 app
-  .controller('mainCtrl', ['$scope', '$timeout', 'Power',
+  .controller('powerCtrl', ['$scope', '$timeout', 'Power',
     function($scope, $timeout, Power) {
 
       $scope.load = function() {
-        console.log('load powers,', $scope.lang);
         $scope.clearPower();
         $scope.powers = Power.list();
       };
